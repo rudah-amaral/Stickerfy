@@ -12,6 +12,15 @@ def stickerfy(image, stickerLayer, interpolation, borderColor):
     pdb.gimp_image_resize_to_layers(image)
     for layer in image.layers:
         pdb.gimp_layer_resize_to_image_size(layer)
+    composedFramesWidth = pdb.gimp_image_width(image)
+    composedFramesHeight = pdb.gimp_image_height(image)
+    offsetX = (512.0 - composedFramesWidth) / 2
+    offsetY = (512.0 - composedFramesHeight) / 2
+    pdb.gimp_image_resize(image, 512, 512, offsetX, offsetY)
+    if  composedFramesWidth >= composedFramesHeight:
+        scaleFactor = 464.0 / composedFramesWidth
+    else:
+        scaleFactor = 464.0 / composedFramesHeight
 register(
     "stickerfy",
     "Makes pngs/gifs take on a sticker format described by WhatsApp best practices.",
