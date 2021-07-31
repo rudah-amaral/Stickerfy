@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from gimpfu import *
 
 def stickerfy(image, stickerLayer, interpolation, borderColor):
