@@ -35,8 +35,8 @@ def stickerfy(image, stickerLayer, interpolation, borderColor):
         layerWidth = pdb.gimp_drawable_width(layer) * scaleFactor
         layerHeight = pdb.gimp_drawable_height(layer) * scaleFactor
         pdb.gimp_layer_scale(layer, layerWidth, layerHeight, True)
-
-        border = pdb.gimp_layer_new(image, 512, 512, 1, frameName + "B", 100, 0)
+        frameName = pdb.gimp_item_get_name(layer)
+        border = pdb.gimp_layer_new(image, 512, 512, 1, frameName + " B", 100, 0)
         parentPosition = pdb.gimp_image_get_item_position(image, layer) + 1
         pdb.gimp_image_insert_layer(image, border, None, parentPosition)
         pdb.gimp_image_select_item(image, 2, layer)
